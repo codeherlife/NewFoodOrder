@@ -8,12 +8,17 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
 public class AddFood extends AppCompatActivity {
 
     private ImageButton foodImage;
     private static final int GALLREQ = 1;
     private EditText name, desc, price;
     private Uri uri = null;
+    private StorageReference storageReference = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +28,7 @@ public class AddFood extends AppCompatActivity {
         name = (EditText) findViewById(R.id.itemName);
         desc = (EditText) findViewById(R.id.itemDesc);
         price = (EditText) findViewById(R.id.itemPrice);
+        storageReference = FirebaseStorage.getInstance().getReference("item");
 
     }
 
