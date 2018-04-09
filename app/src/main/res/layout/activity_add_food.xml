@@ -1,9 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.codeherlife.newfoodorder.AddFood">
 
-</android.support.constraint.ConstraintLayout>
+    <ImageButton
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:onClick="imageButtonClicked"
+        android:id="@+id/foodImageButton"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/itemName"
+        android:hint="Enter the name of the food item!"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/itemDesc"
+        android:hint="Enter the description of the food item!"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/itemPrice"
+        android:hint="Enter the food item's price!"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="^_^ Add the food item to the menu ^_^"
+        android:onClick="addItemButtonClicked"/>
+
+</LinearLayout>
