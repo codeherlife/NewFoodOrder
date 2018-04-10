@@ -61,8 +61,8 @@ public class AddFood extends AppCompatActivity {
     public void addItemButtonClicked(View view){
 
         String name_text = name.getText().toString().trim();
-        String desc_text = desc.getText().toString().trim();
-        String price_text = price.getText().toString().trim();
+        final String desc_text = desc.getText().toString().trim();
+        final String price_text = price.getText().toString().trim();
 
         if(!TextUtils.isEmpty(name_text) && !TextUtils.isEmpty(desc_text) && !TextUtils.isEmpty(price_text) ){
 
@@ -72,6 +72,11 @@ public class AddFood extends AppCompatActivity {
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     final Uri downloadurl = taskSnapshot.getDownloadUrl();
                     Toast.makeText(AddFood.this, "Image uploaded", Toast.LENGTH_LONG).show();
+                    final DatabaseReference newPost = mRef.push();
+                    newPost.child("name").setValue(name_text);
+                    newPost.child("desc").setValue(desc_text);
+                    newPost.child("price").setValue(price_text);
+                    newPost.child("image").setValue(downloadurl.toString());
 
 
                 }
