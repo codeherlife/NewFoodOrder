@@ -11,6 +11,8 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -22,6 +24,8 @@ public class AddFood extends AppCompatActivity {
     private EditText name, desc, price;
     private Uri uri = null;
     private StorageReference storageReference = null;
+    private DatabaseReference mRef;
+    private FirebaseDatabase firebaseDatabase;
 
 
     @Override
@@ -33,6 +37,7 @@ public class AddFood extends AppCompatActivity {
         desc = (EditText) findViewById(R.id.itemDesc);
         price = (EditText) findViewById(R.id.itemPrice);
         storageReference = FirebaseStorage.getInstance().getReference("item");
+        mRef = FirebaseDatabase.getInstance().getReference("Item");
 
     }
 
@@ -67,6 +72,7 @@ public class AddFood extends AppCompatActivity {
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     final Uri downloadurl = taskSnapshot.getDownloadUrl();
                     Toast.makeText(AddFood.this, "Image uploaded", Toast.LENGTH_LONG).show();
+
 
                 }
             });
